@@ -6,7 +6,7 @@ class MapsController < ApplicationController
   def address_to_coords
     @address = params.fetch("user_address")
     
-    url = "https://maps.googleapis.com/maps/api/geocode/json?address=5807+S+Woodlawn+Ave&key=AIzaSyDB6uZXmYRlo88RLhAxD-yxUbMIZd4oHpg"
+    url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + @address + "&key=" + ENV.fetch("GMAPS_KEY")
 
     raw_data = open(url).read
     parsed_data = JSON.parse(raw_data)
